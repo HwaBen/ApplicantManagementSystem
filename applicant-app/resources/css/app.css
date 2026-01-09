@@ -1,0 +1,616 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+
+
+:root {
+    --primary: #1865bd;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+h1.page-title {
+    color: var(--primary);
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+h2{
+    color: var(--primary);
+    font-size: 28px;
+}
+
+form {
+    margin: 40px auto;
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+input, select, textarea {
+    width: 90%;
+    padding: 8px 10px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+input:focus, select:focus {
+    border-color: #2563eb;
+    outline: none;
+}
+
+.radio-cards {
+    display: flex;
+    gap: 12px;
+}
+
+.radio-card {
+    position: relative;
+    padding: 10px 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.2s ease;
+}
+
+.radio-card input {
+    display: none;
+}
+
+.radio-card:hover {
+    border-color: #999;
+}
+
+.radio-card input:checked + span {
+    font-weight: 600;
+}
+
+.radio-card input:checked ~ span,
+.radio-card:has(input:checked) {
+    border-color: #2563eb;
+    background-color: #eff6ff;
+}
+
+/* Search Card */
+.search-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.search-card label {
+    font-weight: bold;
+}
+
+.search-card input,
+.search-card select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.search-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.search-field {
+    flex: 1 1 20%;
+    min-width: 200px;     /* prevents squeezing too small */
+}
+
+.search-field input,
+.search-field select {
+    width: 100%;
+}
+
+.search-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    margin-top: 25px;
+}
+
+table thead {
+    background: var(--primary);
+    color: white;
+}
+
+table th, table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+.table-center {
+    text-align: center;
+    vertical-align: middle !important;
+}
+
+.filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.filter-item {
+    width: 20%;
+    flex: 1;
+}
+
+.filter-item label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.filter-item input,
+.filter-item select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+
+/* Tablet (≤ 1024px) */
+@media (max-width: 1024px) {
+    .filter-item {
+        width: 45%;    /* 2 per row */
+    }
+}
+
+/* Mobile (≤ 600px) */
+@media (max-width: 600px) {
+    .filter-item {
+        width: 100%;   /* 1 per row */
+    }
+}
+
+/* Buttons */
+.btn-primary {
+    background: var(--primary);
+    color: #fff;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.btn-primary:hover {
+    background: #2f7ed5;
+}
+
+.btn-danger {
+    background:#ff4d4d; 
+    color:white; 
+    padding:8px 16px; 
+    border:none; 
+    border-radius:6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+/* Action Icons */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-icon {
+    width: 28px;
+    height: 28px;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* View = Blue */
+.btn-view {
+    background: #3892f2;
+}
+
+/* Edit = Green */
+.btn-edit {
+    background: #28a745;
+}
+
+/* Delete = Red */
+.btn-delete {
+    background: #dc3545;
+}
+
+.btn-icon i {
+    font-size: 14px;
+}
+
+/* Download */
+.downloads {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/*.downloads img {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    margin-left: 10px;
+    cursor: pointer;
+} */
+
+.downloads {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.download-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.download-right {
+    font-size: 16px;
+    font-weight: 600;
+    color: #444;
+}
+
+.icon-pdf {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.icon-csv {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+
+
+/* HEADER DESIGN */
+.main-header {
+    width: 100%;
+    background: #e3f2fd; /* Light blue */
+    padding: 14px 40px; /* Increased left/right padding */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #0d47a1; /* Dark MTDC Blue */
+    box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* LEFT SIDE */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.mtdc-logo {
+    width: auto;
+    height: 40px;
+}
+
+.header-title {
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    text-shadow: 0 2px 5px rgba(13, 71, 161, 0.25); /* blue shadow */
+    color: #1865bd; /* Ensure text stays dark blue */
+    max-width: 380px;
+}
+
+/* RIGHT SIDE */
+.header-right {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-right: 5%; /* Pulls icon inward so it’s not out of screen */
+}
+
+.profile-icon i {
+    font-size: 35px;      /* icon size */
+    color: var(--primary);       /* CHANGE COLOR HERE */
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.profile-icon i:hover {
+    color: #3892f2;       /* hover color */
+}
+
+
+/* DROPDOWN */
+.profile-dropdown {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background: white;
+    color: black;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    overflow: hidden;
+    min-width: 150px;
+}
+
+.profile-dropdown.show {
+    display: block;
+}
+
+.profile-dropdown a {
+    display: block;
+    padding: 10px 15px;
+    color: black;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.profile-dropdown a:hover {
+    background: #eeeeee;
+}
+
+.profile-icon.active + .profile-dropdown {
+    display: block;
+}
+
+
+/* MAIN SEARCH BAR */
+.search-wrapper {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.search-top {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.search-input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+/* Buttons */
+.more-filter-btn {
+    padding: 10px 16px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.search-btn {
+    padding: 10px 20px;
+    background: #202A75;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+/* FILTER PANEL */
+.filter-panel {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 12px;
+    display: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Filter Group Accordion */
+.filter-group {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+.filter-title {
+    font-weight: 600;
+    color: #202A75;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+}
+
+.filter-dropdown {
+    padding: 10px 0 10px 10px;
+    display: none;
+}
+
+/* Multi-select */
+.multi-select label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 0;
+    cursor: pointer;
+}
+
+.multi-select input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+}
+.filter-group.active .filter-dropdown {
+    display: block;
+}
+
+/* Filter panel improvements */
+.filter-panel {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    padding: 12px;
+}
+
+/* Each filter group: title + dropdown */
+.filter-group {
+    border-bottom: 1px solid #eee;
+    padding: 8px 0;
+}
+
+/* Title row */
+.filter-title {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 700;
+    color: #163b69;
+    padding: 8px 0;
+}
+
+/* Dropdown panel */
+.filter-dropdown {
+    padding: 10px 6px 18px 6px;
+    display: none; 
+}
+
+/* Multi-select lists (checkboxes) — displayed in columns/grid */
+.filter-dropdown.multi-select {
+    max-height: 100px;       /* limit height so it's not huge */
+    overflow-y: auto;        /* scroll inside the dropdown */
+    padding-right: 8px;      /* room for scrollbar */
+}
+
+/* Use grid for checkbox lists (2 columns on desktop) */
+.filter-dropdown.multi-select .multi-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2px 18px;
+}
+
+/* On smaller screens, single column */
+@media (max-width: 768px) {
+    .filter-dropdown.multi-select .multi-list {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-panel {
+        padding: 8px;
+    }
+}
+
+
+/* small styling for checkbox labels */
+.filter-dropdown label {
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding: 6px 4px;
+    font-size: 0.95rem;
+}
+
+/* Remove underline from all links */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Optional: underline only on hover (modern UX) */
+a:hover {
+    text-decoration: none;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 30px 0;
+    list-style: none;
+    padding: 0;
+}
+
+.page-item {
+    display: inline-block;
+}
+
+.page-link {
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background: white;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.page-link:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.page-item.active .page-link {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.page-item.disabled .page-link {
+    color: #aaa;
+    cursor: not-allowed;
+    background: #f3f3f3;
+}
