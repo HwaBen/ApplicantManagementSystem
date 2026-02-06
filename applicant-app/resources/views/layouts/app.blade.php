@@ -21,8 +21,10 @@
         </div>
     </div>
 
-    <a href="{{ route('participants.create') }}">Add Data</a>
+    <a href="{{ route('applicants.create') }}">Add Data</a>
+    <a href="{{ route('applicants.search') }}">Applicant Search</a>
     <a href="{{ route('participants.search') }}">Participant Search</a>
+    <a href="{{ route('applicants.charts') }}">Charts Page</a>
 
     <div class="header-right">
         <div class="profile-icon" id="profileToggle">

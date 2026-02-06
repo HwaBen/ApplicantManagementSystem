@@ -3,63 +3,52 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Applicant;
+use App\Models\Participant;
+use App\Models\Company;
 use App\Models\Qualification;
 use App\Models\Race;
 use App\Models\Option;
 use App\Models\Gender;
 use App\Models\State;
 use App\Models\Institution;
+use App\Models\EmployStatus;
+use App\Models\UnemployDuration;
+use App\Models\Income;
 
 
 class ParticipantController extends Controller
 {
-public function search()
-{
-    $races = Race::all();   // fetch all races from the database
-    $qualifications = Qualification::all();
+    public function search()
+    {
+        $companies = Company::all();
 
-$applicants = Applicant::query()
-    ->when(request('keyword'), function ($q, $keyword) {
-        $q->where(function ($q2) use ($keyword) {
-            $q2->where('name', 'LIKE', "%{$keyword}%")
-               ->orWhere('email', 'LIKE', "%{$keyword}%")
-               ->orWhere('mobile', 'LIKE', "%{$keyword}%")
-               ->orWhere('field', 'LIKE', "%{$keyword}%");
-        });
-    })
-    ->when(request('age_min'), fn ($q, $min) => $q->where('age', '>=', $min))
-    ->when(request('age_max'), fn ($q, $max) => $q->where('age', '<=', $max))
-    ->when(request('race'), fn ($q, $races) => $q->whereIn('race_id', $races))
-    ->when(request('gender'), fn ($q, $genders) => $q->whereIn('gender_id', $genders))
-    ->when(request('bumiputera'), fn ($q, $bumiputera) => $q->whereIn('bumi_id', $bumiputera))
-    ->when(request('malaysian'), fn ($q, $nationality) => $q->whereIn('nationality_id', $nationality))    
-    ->when(request('state'), fn ($q, $state) => $q->whereIn('state_id', $state))
-    ->when(request('qualification'), fn ($q, $qualification) => $q->whereIn('qualification_id', $qualification))
+        $participants= Participant::query()
+            ->when(request('keyword'), function ($q,$keyword){
+                // Remove hyphens from the user's search input
+                
+                $cleanKeyword = str_replace('-', '', $keyword);
 
-    ->paginate(20)
-    ->withQueryString();
+                $q->where(function($q2) use($keyword, $cleanKeyword){
+                    $q2->where('name', 'LIKE', "%{$keyword}%")
+                    ->orWhere('email', 'LIKE', "%{$keyword}%")
+                    ->orWhere('field', 'LIKE', "%{$keyword}%")
+                    // Remove hyphens from database value before comparing
+                    ->orWhereRaw("REPLACE(ic_num, '-', '') LIKE ?", ["%{$cleanKeyword}%"])
+                    ->orWhereRaw("REPLACE(mobile, '-', '') LIKE ?", ["%{$cleanKeyword}%"]);             
+                    });
+            })
+            ->when(request('company'), fn ($q, $company) => $q->whereIn('company_id', $company))
 
-    return view('participants.search', [
-        'applicants' => $applicants, 'races' => $races, 'qualifications'=>$qualifications
-    ]);
-    } 
+            ->paginate(20)
+            ->withQueryString();            
 
-public function show($id){
-    $applicant = Applicant::findOrFail($id);
-    return view ('participants.show', compact('applicant'));
+        return view('participants.search',[
+            'participants'=>$participants, 'companies'=> $companies
+        ]);
+    }
+
+    public function show($id){
+        $participant = Participant::findOrFail($id);
+    return view ('participants.show', compact('participant'));
 }
-
-public function create(){
-    
-    $options = Option::all();
-    $genders = Gender::all();
-    $races = Race::all();
-    $states = State::all();
-    $qualifications = Qualification::all();
-    $institutes = Institution::all();
-   
-    return view ('participants.create',compact('options','genders','races','states','qualifications','institutes'));
-}
-
 }

@@ -36,13 +36,17 @@ h2{
     font-size: 28px;
 }
 
-form {
+.search-form {
     margin: 40px auto;
     padding: 25px;
     background: #ffffff;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     font-family: Arial, sans-serif;
+}
+
+.delete-form{
+    display: inline-flex;
 }
 
 label {
@@ -265,9 +269,22 @@ table th, table td {
     background: #dc3545;
 }
 
-.btn-icon i {
+.btn-icon  {
     font-size: 14px;
 }
+
+.btn-show-delete{
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    background: #dc3545;
+}
+
 
 /* Download */
 .downloads {
@@ -613,4 +630,10 @@ a:hover {
     color: #aaa;
     cursor: not-allowed;
     background: #f3f3f3;
+}
+
+.big-checkbox {
+    transform: scale(1.5);
+    margin-right: 8px;
+    cursor: pointer;
 }

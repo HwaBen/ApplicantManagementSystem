@@ -15,6 +15,8 @@ class Applicant extends Model
     'computer_availability','employ_status_id', 'unemploy_duration_id', 'household_id',
     'income_id', 'option_1_id', 'option_2_id','option_3_id', 'other_programme','other_programme_name', 
     'exposure_id', 'agree'];
+    const CREATED_AT = 'timestamp';
+    const UPDATED_AT = 'timestamp';
 
     public function gender(){
         return $this->belongsTo(Gender::class,'gender_id');   

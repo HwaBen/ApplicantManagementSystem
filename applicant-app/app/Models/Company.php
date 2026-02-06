@@ -5,17 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Gender extends Model
+class Company extends Model
 {
-    protected $table = 'gender_table';
-    protected $fillable = ['gender'];
-
-    public function applicant(){
-        return $this->hasMany(Applicant::class);
-    }
+    protected $table = 'company_table';
+    protected $fillable = ['company'];
 
     public function participant(){
         return $this->hasMany(Participant::class);
     }
-    use HasFactory;
 }
+

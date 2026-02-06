@@ -9,7 +9,7 @@
 <body class="text-center px-8 py-12">
     <h2>Welcome to MTDC</h1>
 
-    <a href="/search" class="btn-primary">
+    <a href="/applicants/search" class="btn-primary">
     APPLICANT SEARCH
     </a>
 
