@@ -1,0 +1,16 @@
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+
+class EventServiceProvider extends ServiceProvider
+{
+    /**
+     * Enable automatic event discovery.
+     */
+    public function shouldDiscoverEvents(): bool
+    {
+        return true;
+    }
+}

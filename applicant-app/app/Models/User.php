@@ -11,8 +11,8 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable, TwoFactorAuthenticatable;
+
 
     /**
      * The attributes that are mass assignable.
@@ -23,6 +23,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'last_login',
+        'status',
     ];
 
     /**
@@ -46,6 +49,7 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
+            'last_login' => 'datetime',
             'password' => 'hashed',
         ];
     }
@@ -61,4 +65,15 @@ class User extends Authenticatable
             ->map(fn ($word) => Str::substr($word, 0, 1))
             ->implode('');
     }
+    
+    public function dashboardRoute()
+    {
+        return match ($this->role) {
+            'super_admin' => route('superadmin.dashboard'),
+            'admin'       => route('admin.dashboard'),
+            default       => route('user.dashboard'),
+        };
+    }
+
+
 }
