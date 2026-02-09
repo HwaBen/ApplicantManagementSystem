@@ -365,6 +365,112 @@ table th, table td {
     background-color: #3892f2;
 }
 
+.btn-create,
+.btn-cancel {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.btn-create {
+    background-color: #0d9488; /* teal */
+    color: #ffffff;
+}
+
+.btn-create:hover {
+    background-color: #0f766e;
+}
+
+.btn-right {
+    float: right;
+}
+
+
+/* Cancel */
+.btn-cancel {
+    background-color: #e5e7eb; /* light gray */
+    color: #2f3643;
+}
+
+.btn-cancel:hover {
+    background-color: #d1d5db;
+}
+
+.btn-create {
+    background-color: #3892f2;
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+}
+.btn-create:hover {
+    background-color: #3892f2;
+}
+
+.btn-create,
+.btn-cancel {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.btn-create {
+    background-color: #0d9488; /* teal */
+    color: #ffffff;
+}
+
+.btn-create:hover {
+    background-color: #0f766e;
+}
+
+.btn-right {
+    float: right;
+}
+
+
+/* Cancel */
+.btn-cancel {
+    background-color: #e5e7eb; /* light gray */
+    color: #2f3643;
+}
+
+.btn-cancel:hover {
+    background-color: #d1d5db;
+}
+
+.btn-create {
+    background-color: #3892f2;
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+}
+.btn-create:hover {
+    background-color: #3892f2;
+}
+
 .btn-icon  {
     font-size: 14px;
 }
