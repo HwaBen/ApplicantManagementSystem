@@ -29,9 +29,17 @@
     <div class="dashboard-card">
         <h3>Applicants Data</h3>
         <p>View and manage applicant records.</p>
-        <button class="btn-secondary" disabled>
-            Coming Soon
-        </button>
+        <a href="{{ route('applicants.search') }}" class="btn-primary">
+            Applicant Search
+        </a>
+    </div>
+
+    <div class="dashboard-card">
+        <h3>Analytics & Charts</h3>
+        <p>View system statistics and visual reports.</p>
+        <a href="{{ route('applicants.charts') }}" class="btn-primary">
+            View Charts
+        </a>
     </div>
 
 </div>

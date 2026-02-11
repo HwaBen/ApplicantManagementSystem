@@ -2,6 +2,12 @@
 
 @section('content')
 
+<div class="breadcrumb">
+    <a href="{{ auth()->user()->dashboardRoute() }}">Dashboard</a>
+    <span>/</span>
+    <strong>Participant Search</strong>
+</div>
+
 <h1 class="page-title">Applicant Search</h1>
 
 <div class="search-wrapper">

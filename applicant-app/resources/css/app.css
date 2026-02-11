@@ -548,6 +548,18 @@ table th, table td {
     z-index: 1000;
 }
 
+.header-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    gap: 15px;
+}
+
+.header-link:hover {
+    opacity: 0.9;
+}
+
 /* LEFT SIDE */
 .header-left {
     display: flex;
@@ -845,7 +857,7 @@ a:hover {
 
 .dashboard-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     margin-top: 20px;
 }

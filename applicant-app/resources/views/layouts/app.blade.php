@@ -14,21 +14,16 @@
 {{--HEADER--}}
 <header class="main-header">
     <div class="header-left">
-        <img src="{{ asset('images/mtdc-logo.png') }}" class="mtdc-logo">
+        <a href="{{ auth()->user()->dashboardRoute() }}" class="header-link">
+            <img src="{{ asset('images/mtdc-logo.png') }}" class="mtdc-logo">
 
-        <div class="header-title">
-            Malaysian Technology Development Corporation
-        </div>
+            <div class="header-title">
+                Malaysian Technology Development Corporation
+            </div>
+        </a>
     </div>
 
-<<<<<<< HEAD
     <a href="{{ route('applicants.create') }}">Add Data</a>
-    <a href="{{ route('applicants.search') }}">Applicant Search</a>
-    <a href="{{ route('participants.search') }}">Participant Search</a>
-    <a href="{{ route('applicants.charts') }}">Charts Page</a>
-=======
-    <a href="{{ route('participants.create') }}">Add Data</a>
->>>>>>> c87aa40 (Work in progress for huda-dev)
 
     <div class="header-right">
         <div class="profile-icon" id="profileToggle">

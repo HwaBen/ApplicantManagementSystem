@@ -92,7 +92,6 @@
     </thead>
 
    <tbody>
-<<<<<<< HEAD
         @foreach($participants as $participant)
             <tr>
                 <td class="table-center">{{ $participant['id']}}</td>
@@ -122,38 +121,6 @@
                 </td>
             </tr>
         @endforeach
-=======
-    @foreach($applicants as $applicant)
-    <tr>
-        <td class="table-center">{{ $applicant['id']}}</td>
-        <td>{{ $applicant['name'] }}</td>
-        <td>{{ $applicant['ic_num'] }}</td>
-        <td>{{ $applicant['email'] }}</td>
-        <td>{{ $applicant['mobile'] }}</td>
-        <td class="table-center">{{ $applicant['age'] }}</td>
-        <td class="table-center">{{ $applicant->gender->gender }}</td>
-        <td>{{ $applicant['field'] }}</td>
-        <td class="table-center action-buttons">
-            {{-- View --}}
-            <a href="{{ route('participants.show', $applicant['id']) }}" class="btn-icon btn-view" title="View Details">
-                 <i class="fa fa-info"></i>
-            </a>
-
-            {{-- Edit --}}
-            <button type="button" class="btn-icon btn-edit" title="Edit Data">
-                 <i class="fa fa-pencil"></i>
-            </button>
-
-            {{-- Delete --}}
-            <button type="button" class="btn-icon btn-delete" title="Delete Data">
-                 <i class="fa fa-trash"></i>
-             </button>
-</td>
-
-
-    </tr>
-    @endforeach
->>>>>>> c87aa40 (Work in progress for huda-dev)
     </tbody>
 </table>
 </div>
